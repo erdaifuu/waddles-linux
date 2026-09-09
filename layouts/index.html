@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	{{ partial "header.html" . }}
+	<body>
+		<div class="content">
+			{{ partial "head.html" . }}
+
+			<main class="list">
+				{{ .Content }}
+
+				{{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
+				{{ with where $pages "Params.hidden" "ne" true }}
+				<h2>Lectures</h2>
+				<ol class="lecture-list">
+					{{ range .ByDate }}
+					<li>
+						<a href="{{ .RelPermalink }}">{{ .Title }}</a>
+						{{- with .Params.description }} &mdash; {{ . }}{{ end }}
+						{{- if .Draft }} <span class="draft-label">DRAFT</span>{{ end }}
+					</li>
+					{{ end }}
+				</ol>
+				{{ end }}
+			</main>
+			{{ partial "footer.html" . }}
+		</div>
+	</body>
+</html>

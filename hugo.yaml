@@ -1,0 +1,33 @@
+baseURL: /
+locale: en-us
+title: Waddles guide to sysadmin
+theme: archie
+
+pygmentsstyle: github
+pygmentscodefences: true
+pygmentscodefencesguesssyntax: true
+
+params:
+  mode: light
+  useCDN: false
+  subtitle: Notes and labs for Linux sysadmin at the OCF
+  description: Learning Linux system administration at the Open Computing Facility
+  mainSections:
+    - posts
+
+  customCSS:
+    - css/custom.css
+
+  social:
+    - name: GitHub
+      icon: github
+      url: https://github.com/ocf
+
+menus:
+  main:
+    - name: Home
+      url: /
+      weight: 1
+    - name: About
+      url: /about
+      weight: 2
