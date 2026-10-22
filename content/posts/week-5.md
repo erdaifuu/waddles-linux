@@ -107,7 +107,8 @@ The transport layer is responsible for **reliable and effective** delivery of da
 ### TCP 
 This is the **reliable** protocol.
 - Reliability > speed. 
-- You get an ordered stream of bytes. What you put in is what comes out! Sounds simple, but the internet is unreliable, and packets get silently dropped all the time.
+- You get an ordered stream of bytes. What you put in is what comes out!
+   - Sounds simple, but the internet is unreliable, and packets get silently dropped all the time.
 - Connection-oriented. Need to initiate a connection before sending data, and receivers sends back ACK (acknowledgement) so we know they received the packet. Otherwise we'll just keep resending!
 - Reliable but additional latency and overhead due to the 3-way handshake and the ACKs.
 - Used for pretty much everything. E.g. emailing, web browsing, file sharing.
@@ -122,16 +123,16 @@ This is the **effective** protocol.
 - E.g. Youtube, video calls, video games! If you've lagged before, you've been on the receiving end of UDP.
 ![UDP Diagram](https://d2cest1yk6hx2d.cloudfront.net/uninets-001/store/3057/article%20images/udp-working%20(1).png)
 
-Great, so now our packet is *actually* in the correct machine, and it's delivered nicely and neatly. TIme to pick it up!
+Great, so now our packet is delivered correctly. Time to unpack it!
 
 ## Application Layer
+<!--[Application Layer](https://media.geeksforgeeks.org/wp-content/uploads/20251215122700271313/application-layer.gif)-->
+
 The application layer is where application specific functions happen!
 
 Everything up until now has built up a foundation for reliably transmitting packets over the internet, only now can we assume we have a reliable, end-to-end connection between computers. So now we focus on what can actually be done with the data! 
 
 This also shows the power and purpose of the layered design of the internet. All the low level networking things are abstracted away, and applications can take it all for granted.
-
-<!--[Application Layer](https://media.geeksforgeeks.org/wp-content/uploads/20251215122700271313/application-layer.gif)-->
 
 ### DNS
 Maps human readable names to IP addresses. Like `erdaifuu.decal.ocfhosted.com` to `128.38.169.100`. 
@@ -157,10 +158,14 @@ google.com.		254	IN	A	142.251.218.142
 ;; MSG SIZE  rcvd: 55
 ```
 
-We'll talk about this a LOT more in the next lecture.
+We'll talk more about DNS in the next lecture.
 
 --- 
 
-Putting it all together, our packet first goes to the link layer and heads up the ethernet. Then it decodes its destination IP address, goes from the local router and bounces around other routers until it finally ends up in the destination address. Then the transport protocol strips the packet and handles how it is received. Finally, the packet goes up into the application, where we can do anything we'd like with it. Hoorah!
+## Putting it all together
+1. The **link layer** receives our packet, and sends that to our local router on the same network, using the *MAC address* of the router as destination. We can use `ip link` to see our link layer network interfaces.
+2. Next, the **internet layer** decodes the packet's destination *IP address*. The packet then gets sent from the local router, and bounces around other routers until it finally ends up in the destination address. We can use `traceroute <dest>` to see the path our packet took to get to that address.
+3. Then, the **transport layer** decodes the packet and handles how it is received. Either using TCP or UDP.
+4. Finally, the packet goes up into the **application layer**, where we can do anything we'd like with it. Hoorah! 
 
 If you're interested in what I talked about this lecture, look into CS 168! 
