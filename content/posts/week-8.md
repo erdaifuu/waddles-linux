@@ -196,6 +196,8 @@ Here's a typical workflow for working with Git:
     git merge feature
     git push origin master
 
+If you find yourself comfortable with this workflow and want to expand your git repertoire, look into git worktrees
+
 ---
 
 ## Backups: Just Do It
