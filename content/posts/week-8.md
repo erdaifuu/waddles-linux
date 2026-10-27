@@ -75,7 +75,7 @@ Understanding file states is crucial for working with Git:
 
 ### Modified
 
-File is changed but isn't committed to your database (repository) yet.
+File is changed but isn't committed to your database (repository) yet. You can see which files are modified with `git status`.
 
 ### Staged
 
@@ -195,6 +195,8 @@ Here's a typical workflow for working with Git:
     git pull origin master
     git merge feature
     git push origin master
+
+If you find yourself comfortable with this workflow and want to expand your git repertoire, look into git worktrees.
 
 ---
 
