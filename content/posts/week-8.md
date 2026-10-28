@@ -280,3 +280,4 @@ Described as "rsync for cloud storage," rclone supports every major cloud storag
 - **Pro Git** (git-scm.com) — The bible for Git. Chapters 1-5 form a good foundation.
 - **Oh Shit, Git!?!** (ohshitgit.com) — "Git is hard: screwing up is easy, and figuring out how to fix your mistakes is fucking impossible." Short guide on how to recover from common Git mistakes.
 - **Shell/Editor integration** — Tools like vim-fugitive can enhance your Git workflow.
+- **Learn Git Branching** - (https://learngitbranching.js.org/?locale=en_US) Interactive diagram to show you how git branching works.
